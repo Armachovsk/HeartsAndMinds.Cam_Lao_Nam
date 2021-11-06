@@ -1,0 +1,51 @@
+author = "Giallustio, Armachovsk Team";
+onLoadName = $STR_BTC_HAM_DESCR_NAME;
+onLoadMission = $STR_BTC_HAM_DESCR_MISSION;
+enabledebugconsole = 1;
+allowFunctionsRecompile = 1;
+allowFunctionsLog = 1;
+
+#include "core\def\param.hpp"
+#include "HeartsAndMindsCore\description.inc"
+#include "SpecBased\description.inc"
+
+class RscTitles {
+    class Default {
+        idd = -1;
+        fadein = 0;
+        fadeout = 0;
+        duration = 0;
+    };
+    #include "HeartsAndMindsCore\RscTitles.inc"
+};
+
+class CfgFunctions {
+    #include "HeartsAndMindsCore\CfgFunctions.inc"
+    #include "SpecBased\CfgFunctions.inc"
+};
+
+class CfgSounds
+{
+	sounds[] = {};
+    #include "SpecBased\CfgSounds.inc"
+};
+
+class CfgNotifications
+{
+};
+
+class Extended_InitPost_EventHandlers {
+    class LandVehicle {
+        #include "HeartsAndMindsCore\Extended_InitPost_EventHandlers\LandVehicle.inc"
+    };
+    class Air {
+        #include "HeartsAndMindsCore\Extended_InitPost_EventHandlers\Air.inc"
+    };
+    class Ship {
+        #include "HeartsAndMindsCore\Extended_InitPost_EventHandlers\Ship.inc"
+    };
+};
+
+// Disable BI wreck system (H&M handle it internally)
+wreckManagerMode = 0;
+corpseManagerMode = 0;
